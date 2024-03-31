@@ -22,16 +22,16 @@ $imgsHangman = ['Hangman-0.png', 'Hangman-1.png', 'Hangman-2.png', 'Hangman-3.pn
 
 <div class="container">
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100px;">
-        <h1 id='mensaje_fin'>{{ $partida->esFin() ? ($partida->esPalabraDescubierta() ? "Enhorabuena!" : "Has perdido!") : "" }}</h1>
+        <h1 id='mensaje'>{{ $partida->esFin() ? ($partida->esPalabraDescubierta() ? "Enhorabuena!" : "Has perdido!") : "" }}</h1>
     </div>
     <div class="row">
         <div class="col-md-8">
-            <h1>{{ $partida->esFin() ? implode(" ", str_split($partida->getPalabraSecreta())) : implode(" ", str_split($partida->getPalabraDescubierta())) }}</h1>
+            <h1 id="palabra">{{ $partida->esFin() ? implode(" ", str_split($partida->getPalabraSecreta())) : implode(" ", str_split($partida->getPalabraDescubierta())) }}</h1>
             <form action="juego.php" method="POST">
                 <div class="input-group mb-3">
-                    <input type="text" name="letra" autofocus class="form-control me-5 {{ (isset($error)) ? (($error) ? 'is-invalid' : 'is-valid') : '' }}" placeholder="Introduce una letra" {{ $partida->esFin() ? 'disabled' : '' }}>
+                    <input type="text" id="letra" name="letra" autofocus class="form-control me-5 {{ (isset($error)) ? (($error) ? 'is-invalid' : 'is-valid') : '' }}" placeholder="Introduce una letra" {{ $partida->esFin() ? 'disabled' : '' }}>
                     <input class="btn btn-outline-secondary" type="submit" id="botonenviarjugada" name="botonenviarjugada" value="Enviar Jugada" {{ $partida->esFin() ? 'disabled' : '' }}>
-                    <input class="btn btn-outline-secondary ms-2" type="submit" id="botonresolverpartida" name="botonresolverpartida" value="Resolver" {{ $partida->esFin() ? 'disabled' : '' }}>
+                    <input class="btn btn-outline-secondary ms-2" id="botonresolverpartida" name="botonresolverpartida" value="Resolver" {{ $partida->esFin() ? 'disabled' : '' }}>
                     @if(isset($error) && $error)
                     <div class="invalid-feedback">
                         La letra no es correcta o ya se ha introducido.
