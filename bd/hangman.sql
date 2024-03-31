@@ -23,9 +23,9 @@ CREATE TABLE partidas (
     palabradescubierta VARCHAR(255) NOT NULL,
     letras VARCHAR(255) NOT NULL,
     maxnumerrores INT NOT NULL,
-    inicio TIMESTAMP NOT NULL,
+    inicio TIMESTAMP NULL DEFAULT NULL,
     fin TIMESTAMP NULL DEFAULT NULL,
-    idusuario int(11) NOT NULL
+    idusuario int(11) NULL DEFAULT NULL
 );
 
 ALTER TABLE partidas
