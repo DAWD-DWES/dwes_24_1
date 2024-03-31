@@ -21,7 +21,7 @@ require "../vendor/autoload.php";
 
 use eftec\bladeone\BladeOne;
 use Dotenv\Dotenv;
-use App\Modelo\Hangman;
+use App\Modelo\Partida;
 use App\Almacen\AlmacenPalabrasFichero;
 
 
@@ -57,7 +57,7 @@ if (isset($_SESSION['usuario'])) {
     } elseif (filter_has_var(INPUT_GET, 'botonnuevapartida')) { // Se arranca una nueva partida
         $rutaFichero = $_ENV['RUTA_ALMACEN_PALABRAS'];
         $almacenPalabras = new AlmacenPalabrasFichero($rutaFichero);
-        $partida = new Hangman($almacenPalabras, MAX_NUM_ERRORES);
+        $partida = new Partida($almacenPalabras, MAX_NUM_ERRORES);
         $_SESSION['partida'] = $partida;
 // Invoco la vista del juego para empezar a jugar
         echo $blade->run("juego", compact('usuario', 'partida'));

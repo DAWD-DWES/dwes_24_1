@@ -7,7 +7,7 @@ use App\Almacen\IAlmacenPalabras;
 /**
  * Clase que representa una partida del juego del ahorcado
  */
-class Hangman {
+class Partida {
 
     /**
      * @var int $numErrores Número de errores cometidos en la partida
