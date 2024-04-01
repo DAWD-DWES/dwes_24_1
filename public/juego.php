@@ -96,7 +96,7 @@ if (isset($_SESSION['usuario'])) {
         $partidaDAO->modifica($partida);
         $resultado = $partida->esPalabraDescubierta();
         $palabra = $partida->getPalabraSecreta();
-        header('Content-type: application/html');
+        header('Content-type: application/json');
         echo json_encode(['resultado' => $resultado,
             'palabra' => $palabra]);
         die;

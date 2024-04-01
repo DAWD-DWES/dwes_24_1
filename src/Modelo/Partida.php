@@ -51,7 +51,7 @@ class Partida {
      * @var DateTime $fin Fecha y Hora del fin de la partida
      */
     private ?DateTime $fin = null;
-    
+
     /**
      * @var int $idUsuario Identificador del usuario
      */
@@ -239,7 +239,7 @@ class Partida {
     public function setFin(DateTime $fin): void {
         $this->fin = $fin;
     }
-    
+
     /**
      * Recupera el identificador del usuario de la partida
      * 
@@ -294,19 +294,20 @@ class Partida {
     }
 
     /**
-     * Comprueba la letra elegida por el jugador, modifica el estado de la palabra descubierta y añade la letra
+     * Comprueba la palabra usada por el jugador, modifica el estado de la palabra descubierta y del número de errores
      * 
-     * @param string $letra Letra elegida por el jugador
+     * @param string $palabra Palabra usada para resolver la partida
      * 
-     * @returns string El estado de la palabra descubierta
+     * @returns bool El resultado de comparar la palabra del jugador y la palabra secreta
      */
-    public function compruebaPalabra(string $palabra): string {
-        if ($palabra !== $this->getPalabraSecreta()) {
+    public function compruebaPalabra(string $palabra): bool {
+        $resultado = strtoupper($palabra) !== $this->getPalabraSecreta();
+        if ($resultado) {
             $this->setNumErrores($this->getMaxNumErrores());
         } else {
             $this->setPalabraDescubierta($this->getPalabraSecreta());
         }
-        return ($this->getPalabraDescubierta());
+        return $resultado;
     }
 
     /**
