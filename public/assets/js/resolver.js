@@ -1,4 +1,7 @@
-/*
+// Descomenta esta sección si vas a programar con JQuery
+
+// Inicio Sección JQuery
+
 // Definición del manejador de eventos para el botón de resolver (JQuery) 
 $(document).ready(function () {
     $("#botonresolverpartida").click(resolverPartida);
@@ -16,8 +19,8 @@ function resolverPartida(e) {
         success: function (response)
         {
             mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
-            muestraMensaje(mensaje);
-            muestraPalabra(response.palabra);
+            muestraTexto('mensaje', mensaje);
+            muestraTexto('letra', response.palabra);
             deshabilitaBoton('botonenviarjugada');
             deshabilitaBoton('botonresolverpartida');
         },
@@ -28,26 +31,22 @@ function resolverPartida(e) {
     });
 }
 ;
-// Función que muestra el mensaje después de comprobar la palabra usada para resolver (Jquery)
-function muestraMensaje(mensaje) {
-    $("#mensaje").text(mensaje);
-}
-
-
-// Función que muestra el mensaje después de comprobar la palabra usada para resolver (Jquery)
-function muestraPalabra(palabra) {
-    $("#palabra").text(palabra.split('').join(' '));
+// Función que muestra un texto en el elemento cuyo identificador es id (Jquery)
+function muestraTexto(id, texto) {
+    $("#${id}").text(texto);
 }
 
 
 // Función que deshabilita un botón dado su id (Jquery)
-function deshabilitaBoton(boton) {
-    $("#${boton}").prop('disabled', true);
+function deshabilitaBoton(idBoton) {
+    $("#${idBoton}").prop('disabled', true);
 }
 
-*/
+// Fin sección JQuery
 
+// Descomenta esta sección si vas a programar con JavaScript puro
 
+// Inicio Sección JavaScript puro
 
 // Definición del manejador de eventos para el botón de resolver (JavaScript puro) 
 document.addEventListener("DOMContentLoaded", function () {
@@ -68,8 +67,8 @@ function resolverPartida(e) {
             if (objXMLHttpRequest.status === 200) {
                 const response = objXMLHttpRequest.response;
                 mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
-                muestraMensaje(mensaje);
-                muestraPalabra(response.palabra);
+                muestraTexto('mensaje', mensaje);
+                muestraTexto('letra', response.palabra);
                 $('#botonenviarjugada').prop('disabled', true);
                 $('#botonresolverpartida').prop('disabled', true);
             }
@@ -81,18 +80,15 @@ function resolverPartida(e) {
 }
 
 // Función que muestra el mensaje después de comprobar la palabra usada para resolver (JavaScript puro)
-function muestraMensaje(mensaje) {
-    const elementMensaje = document.getElementById('mensaje');
-    elementMensaje.innerText = mensaje;
+function muestraTexto(id, texto) {
+    const element = document.getElementById(id);
+    element.innerText = texto;
 }
 
-// Función que muestra la palabra secreta después de resolver el juego (JavaScript puro)
-function muestraPalabra(palabra) {
-    const elementPalabra = document.getElementById('palabra');
-    elementPalabra.innerText = palabra;
-}
 
 // Función que deshabilita un botón dado su id (Javascript puro)
-function deshabilitaBoton(boton) {
-    document.getElementById(boton).disabled = true;
+function deshabilitaBoton(idBoton) {
+    document.getElementById(idBoton).disabled = true;
 }
+
+// Fin sección JavaScript puro
