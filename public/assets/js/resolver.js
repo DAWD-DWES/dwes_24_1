@@ -20,7 +20,7 @@ function resolverPartida(e) {
         {
             mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
             muestraTexto('mensaje', mensaje);
-            muestraTexto('letra', response.palabra);
+            muestraTexto('palabra', response.palabra.split('').join(' '));
             deshabilitaBoton('botonenviarjugada');
             deshabilitaBoton('botonresolverpartida');
         },
@@ -68,7 +68,7 @@ function resolverPartida(e) {
                 const response = objXMLHttpRequest.response;
                 mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
                 muestraTexto('mensaje', mensaje);
-                muestraTexto('letra', response.palabra);
+                muestraTexto('palabra', response.palabra.split('').join(' '));
                 $('#botonenviarjugada').prop('disabled', true);
                 $('#botonresolverpartida').prop('disabled', true);
             }
