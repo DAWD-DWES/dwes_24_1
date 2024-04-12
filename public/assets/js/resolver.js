@@ -3,11 +3,11 @@
 // Inicio Sección JQuery
 
 // Definición del manejador de eventos para el botón de resolver (JQuery) 
-$(document).ready(function () {
+/* $(document).ready(function () {
     $("#botonresolverpartida").click(resolverPartida);
-});
+}); */
 // Función para iniciar el proceso AJAX de resolución de partida y recoger los resultados y mostrarlos en la página (JQuery) 
-function resolverPartida(e) {
+/* function resolverPartida(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     $.ajax({
@@ -30,17 +30,8 @@ function resolverPartida(e) {
         }
     });
 }
-;
-// Función que muestra un texto en el elemento cuyo identificador es id (Jquery)
-function muestraTexto(id, texto) {
-    $("#${id}").text(texto);
-}
+; */
 
-
-// Función que deshabilita un botón dado su id (Jquery)
-function deshabilitaBoton(idBoton) {
-    $("#${idBoton}").prop('disabled', true);
-}
 
 // Fin sección JQuery
 
@@ -62,16 +53,17 @@ function resolverPartida(e) {
     var data = 'botonresolverpartida=' + encodeURIComponent(true) + "&palabra=" + encodeURIComponent(inputPalabra.value);
     var objXMLHttpRequest = new XMLHttpRequest();
     objXMLHttpRequest.responseType = 'json';
-    objXMLHttpRequest.onreadystatechange = function () {
-        if (objXMLHttpRequest.readyState === 4) {
-            if (objXMLHttpRequest.status === 200) {
-                const response = objXMLHttpRequest.response;
-                mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
-                muestraTexto('mensaje', mensaje);
-                muestraTexto('palabra', response.palabra.split('').join(' '));
-                $('#botonenviarjugada').prop('disabled', true);
-                $('#botonresolverpartida').prop('disabled', true);
-            }
+    objXMLHttpRequest.onload = function () {
+        if (objXMLHttpRequest.status === 200) { // Verifica que la petición fue exitosa
+            const response = objXMLHttpRequest.response;
+            var mensaje = (response.resultado) ? "Enhorabuena!" : "Has perdido!";
+            muestraTexto('mensaje', mensaje);
+            muestraTexto('palabra', response.palabra.split('').join(' '));
+            deshabilitaBoton('botonenviarjugada');
+            deshabilitaBoton('botonresolverpartida');
+        } else {
+            // Manejar otros códigos de estado HTTP, como errores 4xx y 5xx
+            console.error('Error en la petición: ', objXMLHttpRequest.status);
         }
     };
     objXMLHttpRequest.open('POST', 'juego.php');
