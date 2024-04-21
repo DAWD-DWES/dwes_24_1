@@ -24,7 +24,7 @@ class PartidaDAO {
     }
 
     public function crea(Partida $partida): bool {
-        $sql = "INSERT INTO partidas (numerrores, palabrasecreta, palabradescubierta, letras, maxnumerrores, inicio, fin, idusuario) VALUES (:numErrores, :palabraSecreta, :palabraDescubierta, :letras, :maxNumErrores, :inicio, :fin, :idUsuario)";
+        $sql = "INSERT INTO partidas (numErrores, palabraSecreta, palabraDescubierta, letras, maxNumErrores, inicio, fin, idUsuario) VALUES (:numErrores, :palabraSecreta, :palabraDescubierta, :letras, :maxNumErrores, :inicio, :fin, :idUsuario)";
 
         $stmt = $this->bd->prepare($sql);
 
