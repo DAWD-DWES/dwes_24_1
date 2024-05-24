@@ -9,13 +9,13 @@
  *     Destruyo la sesión
  *     Invoco la vista del formulario de login
  *    Sino redirección a juego para jugar una partida
- *  Sino 
+ *  Si no 
  *   Si se pide procesar los datos del formulario
  *       Lee los valores del formulario
  *       Si los credenciales son correctos
  *       Redirijo al cliente al script de juego con una nueva partida
  *        Sino Invoco la vista del formulario de login con el flag de error
- *   Sino (En cualquier otro caso)
+ *   Si no (En cualquier otro caso)
  *      Invoco la vista del formulario de login
  */
 require "../vendor/autoload.php";
