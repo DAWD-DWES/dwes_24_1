@@ -36,6 +36,8 @@ ON UPDATE CASCADE;
 
 INSERT INTO usuarios (id, nombre, clave, email) VALUES
 (1, 'pepe', '123456', 'pepe@pepe.es');
+INSERT INTO usuarios (id, nombre, clave, email) VALUES
+(2, 'luis', '654321', 'luis@luis.es');
 
 COMMIT;
 
