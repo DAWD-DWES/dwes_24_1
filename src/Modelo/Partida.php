@@ -8,6 +8,11 @@ use App\Almacen\IAlmacenPalabras;
  * Clase que representa una partida del juego del ahorcado
  */
 class Partida {
+    
+    /**
+     * @var int id de la partida
+     */
+    private int $id;
 
     /**
      * @var int $numErrores Número de errores cometidos en la partida
@@ -47,6 +52,26 @@ class Partida {
         // Inicializa la estado de la palabra descubierta a una secuencia de guiones, uno por letra de la palabra oculta
         $this->setPalabraDescubierta(preg_replace('/\w+?/', '_', $this->getPalabraSecreta()));
         $this->maxNumErrores = $maxNumErrores;
+    }
+    
+    /**
+     * Recupera el identificador de la partida
+     * 
+     * @returns int Id de la partida
+     */
+    public function getId(): int {
+        return $this->id;
+    }
+
+    /**
+     * Establece el identificador de la partida
+     * 
+     * @param int Id de la partida
+     * 
+     * @returns void
+     */
+    public function setId(int $id): void {
+        $this->id = $id;
     }
 
     /**
