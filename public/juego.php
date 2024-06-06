@@ -82,7 +82,7 @@ if (isset($_SESSION['usuario'])) {
         echo $blade->run("juego", compact('usuario', 'partida', 'error'));
 // Si no si se solicita una nueva partida
     } elseif (filter_has_var(INPUT_GET, 'botonnuevapartida')) { // Se arranca una nueva partida
-        if (!$partida->esFin()) {
+        if ($partida && !$partida->esFin()) {
             $partida->setFin(new DateTime('now'));
             $partidaDAO->modifica($partida);
         }

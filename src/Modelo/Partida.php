@@ -13,7 +13,7 @@ class Partida {
     /**
      * @var int $id Identificador de la partida
      */
-    private ?int $id = null;
+    private ?int $id;
 
     /**
      * @var int $numErrores Número de errores cometidos en la partida
@@ -301,12 +301,15 @@ class Partida {
      * @returns bool El resultado de comparar la palabra del jugador y la palabra secreta
      */
     public function compruebaPalabra(string $palabra): bool {
-        $resultado = strtoupper($palabra) !== $this->getPalabraSecreta();
+        // Compara las cadenas sin importar mayúsculas y minúsculas
+        $resultado = strcasecmp($palabra, $this->getPalabraSecreta()) !== 0;
+
         if ($resultado) {
-            $this->setNumErrores($this->getMaxNumErrores());
+            $this->setNumErrores($this->getMaxNumErrores()); // Aumenta el número de errores en lugar de establecerlo en el máximo
         } else {
             $this->setPalabraDescubierta($this->getPalabraSecreta());
         }
+
         return $resultado;
     }
 
