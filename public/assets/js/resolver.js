@@ -5,9 +5,9 @@
 // Definición del manejador de eventos para el botón de resolver (JQuery) 
 /* $(document).ready(function () {
     $("#botonresolverpartida").click(resolverPartida);
-}); */
+});
 // Función para iniciar el proceso AJAX de resolución de partida y recoger los resultados y mostrarlos en la página (JQuery) 
-/* function resolverPartida(e) {
+function resolverPartida(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     $.ajax({
@@ -30,8 +30,8 @@
         }
     });
 }
-; */
-
+;
+*/
 
 // Fin sección JQuery
 

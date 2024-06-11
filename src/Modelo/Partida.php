@@ -55,7 +55,7 @@ class Partida {
     /**
      * @var int $idUsuario Identificador del usuario
      */
-    private ?int $idUsuario = null;
+    private ?string $idUsuario = null;
 
     /**
      * Constructor de la clase Hangman
@@ -245,7 +245,7 @@ class Partida {
      * 
      * @returns id del usuario de la partida
      */
-    public function getIdUsuario(): ?int {
+    public function getIdUsuario(): ?string {
         return $this->idUsuario;
     }
 
@@ -256,7 +256,7 @@ class Partida {
      * 
      * @returns void
      */
-    public function setIdUsuario(int $idUsuario): void {
+    public function setIdUsuario(string $idUsuario): void {
         $this->idUsuario = $idUsuario;
     }
 
