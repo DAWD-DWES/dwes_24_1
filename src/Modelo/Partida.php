@@ -69,7 +69,7 @@ class Partida {
         $this->setPalabraSecreta(strtoupper($almacen->obtenerPalabraAleatoria()));
         // Inicializa la estado de la palabra descubierta a una secuencia de guiones, uno por letra de la palabra oculta
         $this->setPalabraDescubierta(preg_replace('/\w+?/', '_', $this->getPalabraSecreta()));
-        $this->maxNumErrores = $maxNumErrores;
+        $this->setMaxNumErrores($maxNumErrores);
         $this->setInicio(new DateTime('now'));
     }
 
@@ -305,7 +305,7 @@ class Partida {
         $resultado = strcasecmp($palabra, $this->getPalabraSecreta()) !== 0;
 
         if ($resultado) {
-            $this->setNumErrores($this->getMaxNumErrores()); // Aumenta el número de errores en lugar de establecerlo en el máximo
+            $this->setNumErrores($this->getMaxNumErrores()); // Establece en número de errores al máximo
         } else {
             $this->setPalabraDescubierta($this->getPalabraSecreta());
         }

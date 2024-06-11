@@ -9,11 +9,17 @@
  *     Leo la letra
  *     Si no hay error en la letra introducida
  *       Solicito a la partida que compruebe la letra
+ *     Si es el fin de la partida
+ *       Establezco la fecha de fin
+ *       Actualizo la partida en la BBDD
  *     Invoco la vista de juego con los datos obtenidos
  *   Si no si se solicita una nueva partida
+ *     Si había una partida inacabadas en la sesión
+ *        Se establece la fecha de fin
+ *        Actualizo la partida en la BBDD
  *     Se crea una nueva partida
  *     Invoco la vista del juego para empezar a jugar
- *   Si no si se solicita una nueva partida
+ *   Si no si se solicita resolver la partida
  *      Leo la palabra
  *      Compruebo la palabra
  *      Establezco su fecha de fin
