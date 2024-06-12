@@ -79,10 +79,10 @@ if (isset($_SESSION['usuario'])) {
 // Si no hay error compruebo la letra
         if (!$error) {
             $partida->compruebaLetra(strtoupper($letra));
-        }
-        if ($partida->esFin()) {
-            $partida->setFin(new DateTime('now'));
-            $partidaDAO->modifica($partida);
+            if ($partida->esFin()) {
+                $partida->setFin(new DateTime('now'));
+                $partidaDAO->modifica($partida);
+            }
         }
 // Sigo jugando
         echo $blade->run("juego", compact('usuario', 'partida', 'error'));
