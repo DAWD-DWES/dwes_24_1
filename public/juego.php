@@ -103,14 +103,13 @@ if (isset($_SESSION['usuario'])) {
         // Si no si se resuelve la partida con una palabra
     } elseif (filter_has_var(INPUT_POST, 'botonresolverpartida')) {
         $resolverPalabra = trim(filter_input(INPUT_POST, 'palabra', FILTER_UNSAFE_RAW));
-        $partida->compruebaPalabra($resolverPalabra); // Comprueba palabra
+        $resultado = $partida->compruebaPalabra($resolverPalabra); // Comprueba palabra
         $partida->setFin(new DateTime('now'));
         $partidaDAO->modifica($partida);
-        $resultado = $partida->esPalabraDescubierta();
-        $palabra = $partida->getPalabraSecreta();
+        $palabraSecreta = $partida->getPalabraSecreta();
         header('Content-type: application/json'); // Envía resultado en json
         echo json_encode(['resultado' => $resultado,
-            'palabra' => $palabra]);
+            'palabra' => $palabraSecreta]);
         die;
     } else { //En cualquier otro caso
         echo $blade->run("juego", compact('usuario', 'partida'));
