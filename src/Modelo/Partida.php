@@ -302,12 +302,12 @@ class Partida {
      */
     public function compruebaPalabra(string $palabra): bool {
         // Compara las cadenas sin importar mayúsculas y minúsculas
-        $resultado = strcasecmp($palabra, $this->getPalabraSecreta()) !== 0;
+        $resultado = strcasecmp($palabra, $this->getPalabraSecreta()) === 0;
 
         if ($resultado) {
-            $this->setNumErrores($this->getMaxNumErrores()); // Establece en número de errores al máximo
-        } else {
             $this->setPalabraDescubierta($this->getPalabraSecreta());
+        } else {
+            $this->setNumErrores($this->getMaxNumErrores()); // Establece en número de errores al máximo
         }
 
         return $resultado;
